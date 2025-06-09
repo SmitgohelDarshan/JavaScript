@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        n = parseInt(prompt("Enter Number: "))
+
+        digit = n.toString().length  ///only for count digit
+        sum = 0
+        arm = n
+       
+
+        while(n != 0){
+            temp = n % 10
+            sum += Math.pow(temp,digit)
+            n = parseInt(n/10)
+        }
+
+        if(sum == arm)
+            document.writeln("Armstrong Number")
+        else
+            document.writeln("Not Armstrong Number")
+
+
+    </script>
+</body>
+</html>
