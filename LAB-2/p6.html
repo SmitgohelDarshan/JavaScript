@@ -1,0 +1,60 @@
+ <!-- Write an HTML page with JavaScript that takes a number from popup box in the range 0
+999 and display it in words. If the number is out of range, it should show “out of range” and 
+if it is not a number ,it should show “not a number” message in the result box.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        number = parseInt(prompt("Enter number range(0 to 999): "))
+        result = 0
+        a = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
+        b = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
+        c = ['', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+
+        if(isNaN(number)){
+            alert("not a number")
+        }
+        
+        else if((number < 0) || (number > 999)){
+            alert("out of range")
+        }
+
+        while(number != 0){
+
+        if(number == 0){
+            result += "zero"
+        }
+
+        else if(number >= 100){ 
+            result += a[Math.floor(number / 100) - 1] + " Hundred"
+            number %= 100
+        }
+
+        else if((number >= 20) && (number < 100)){
+            result += c[Math.floor(number / 10) - 1] 
+            number %= 10
+        }
+
+        else if((number >10) && (number < 20)){
+            result += b[Math.floor(number) - 1]
+            number %= 10
+        }
+
+        else if((number != 0) && (number < 10)){
+            result += a[Math.floor(number) - 1]
+            break;
+        }
+        }
+
+        
+
+        document.writeln("Result : "+result)
+        
+    </script>
+</body>
+</html>
