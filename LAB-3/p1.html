@@ -1,0 +1,28 @@
+<!-- Demonstrate the use of array to ƒind maximum number. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        size = parseInt(prompt("Enter size of an array: "))
+        array = []
+        // max = array[0]
+        max = -1
+
+        for(i = 0; i < size; i++){
+            array[i] = prompt("Enter element: ")
+        }
+
+        for(i = 0; i < array.length; i++){
+           if(array[i] > max){
+                max = array[i]
+            }
+        }
+        document.writeln("max number: "+max)
+    </script>
+</body>
+</html>

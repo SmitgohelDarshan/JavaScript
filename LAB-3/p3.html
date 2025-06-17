@@ -1,0 +1,31 @@
+<!-- WAP to read an array from the user and sort them using bubble sort. -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <script>
+        size = parseInt(prompt("Enter size of an array: "))
+        array = [size]
+
+        for(i = 0; i < size; i++){
+            array[i] = parseInt(prompt("Enter element: "))
+        }
+
+        for(i = 0; i < array.length - 1; i++){
+            for(j = 0; j < size; j++){ 
+                if(array[j] > array[j+1]){   
+                    temp = array[j]
+                    array[j] = array[j+1]
+                    array[j+1] = temp
+                }
+            }
+        }
+
+         document.writeln(array.join(", "))
+    </script>
+ </body>
+ </html>
