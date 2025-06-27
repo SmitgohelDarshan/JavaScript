@@ -1,0 +1,55 @@
+ <!-- 5. WAP to demonstrate change in properties of HTML element using JavaScript.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Change Properties Example</title>
+  <style>
+    #box {
+      width: 300px;
+      padding: 20px;
+      border: 2px solid #333;
+      text-align: center;
+      background-color: lightgray;
+      font-size: 18px;
+      transition: all 0.5s ease;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+    }
+  </style>
+</head>
+<body>
+
+    <div id="box">I am a box. Click the button to change my style!</div>
+    <button onclick="changeProperties()">Change Style</button>
+    <button id="changecolor">Change Mode</button>
+
+  <script>
+    curr = "light"
+    changecolor.addEventListener("click", ()=>{
+        if(curr === "light"){
+            curr = "black"
+            document.body.style.backgroundColor = "black"
+        }
+        else{
+            curr = "light"
+            document.body.style.backgroundColor = "light"
+        }
+    })
+    
+
+    function changeProperties() {
+      const box = document.getElementById("box");
+      box.innerHTML = "My properties have changed!";
+      box.style.backgroundColor = "skyblue";
+      box.style.color = "white";
+      box.style.fontSize = "24px";
+      box.style.borderRadius = "10px";
+      box.style.borderColor = "blue";
+    }
+  </script>
+
+</body>
+</html>

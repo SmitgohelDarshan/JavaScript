@@ -1,0 +1,171 @@
+<!--WAP to create a basic graphical Calculator using HTML and JavaScript. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* ========== Calculator Styling ========== */
+
+/*--- Page layout ----------------------------------------------------------*/
+body{
+    align-items:flex-start;
+    padding-top:2rem;
+    font-family:"Segoe UI",Arial,Helvetica,sans-serif;
+    background:#f3f4f6;           /* soft light-gray backdrop */
+    color:#333;
+}
+h1{
+    text-align: center;
+}
+
+/*--- Calculator frame -----------------------------------------------------*/
+#display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+table{
+    border-collapse:separate;      /* keep cell spacing we’ll add */
+    border-spacing:6px;            /* gap between keys */
+    background:#1e1e1e;            /* dark body for contrast */
+    padding:12px;
+    border-radius:16px;
+    background: #1e1e1e;
+    box-shadow:0 12px 28px rgba(0,0,0,.25);
+    width:360px;                   /* almost matches your 175px */
+}
+
+/*--- Display --------------------------------------------------------------*/
+#in{
+    width:96%;
+    height:48px;
+    margin-bottom:8px;
+    padding:0 8px;
+    font-size:1.25rem;
+    font-weight:600;
+    text-align:right;
+    background:#212121;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    outline:none;
+}
+
+/*--- General key styling --------------------------------------------------*/
+td{padding:0;}                     /* override default cell padding */
+
+button{
+    width:100%;
+    height:50px;
+    font-size:25px;
+    font-weight:600;
+    border:none;
+    /* border-radius:12px; */
+    cursor:pointer;
+    transition:background .15s ease,transform .1s ease;
+    background:#3b3b3b;
+    color:#fafafa;
+}
+
+/* Hover / active feedback */
+button:hover{background:#4c4c4c;}
+button:active{transform:scale(.94);}
+
+/*--- Special key colours --------------------------------------------------*/
+button[name="add"][onclick^="ac"]{        /* AC key */
+    background:#e74c3c;
+}
+button[name="add"][onclick^="ac"]:hover{
+    background:#f06554;
+}
+
+button[name="add"][onclick^="deletelast"]{/* ⌫ key */
+    background:#616161;
+}
+
+button[name="add"][onclick*="'/'"],
+button[name="add"][onclick*="'*'"],
+button[name="add"][onclick*="'-'"],
+button[name="add"][onclick*="'+'"],
+button[name="add"][onclick*="'%'"]{
+    background:#ff9f0a;                  /* operator keys */
+    color:#000;
+}
+
+button[name="add"][onclick^="ans"]{       /* = key */
+    background:#34c759;
+    color:#000;
+}
+button[name="add"][onclick^="ans"]:hover{
+    background:#46d46b;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Graphical Calculator</h1>
+    <div id="display">
+    <div><table border="1">
+        <tr>
+            <input type="text" id="in" readonly>
+        </tr>
+
+        <tr>
+        <td><button onclick="ac()" name="add">AC</button></td>
+        <td><button onclick="deletelast()" name="add">◀</button></td>
+        <td><button onclick="clickme('%')" name="add">%</button></td>
+        <td><button onclick="clickme('/')" name="add">/</button></td>
+        </tr>
+
+        <tr>
+        <td><button onclick="clickme('7')" name="add">7</button></td>
+        <td><button onclick="clickme('8')" name="add">8</button></td>
+        <td><button onclick="clickme('9')" name="add">9</button></td>
+        <td><button onclick="clickme('*')" name="add">*</button></td>
+        </tr>
+
+        <tr>
+        <td><button onclick="clickme('4')" name="add">4</button></td>
+        <td><button onclick="clickme('5')" name="add">5</button></td>
+        <td><button onclick="clickme('6')" name="add">6</button></td>
+        <td><button onclick="clickme('-')" name="add">-</button></td>
+        </tr>
+
+        <tr>
+        <td><button onclick="clickme('1')" name="add">1</button></td>
+        <td><button onclick="clickme('2')" name="add">2</button></td>
+        <td><button onclick="clickme('3')" name="add">3</button></td>
+        <td><button onclick="clickme('+')" name="add">+</button></td>
+        </tr>
+
+        <tr>
+        <td><button onclick="clickme('00')" name="add">00</button></td>
+        <td><button onclick="clickme('0')" name="add">0</button></td>
+        <td><button onclick="clickme('.')" name="add">.</button></td>
+        <td><button onclick="ans()" name="add">=</button></td>
+        </tr>
+    </table></div>
+    </div>
+
+    <script>
+        function clickme(num){
+            document.getElementById("in").value += num
+        }
+
+        function deletelast(){
+            input = document.getElementById("in"); 
+            input.value = input.value.slice(0,-1);
+        }
+
+        function ans(){
+            exp = document.getElementById("in").value
+            document.getElementById("in").value = eval(exp)
+        }
+        function ac(){
+            document.getElementById("in").value = "";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!-- 4. WAP to recognize which form event is ƒired. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Registration Form</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        height: 100vh;
+        margin: 40px;
+    }
+
+    .middle{
+         display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+    form {
+      background-color: white;
+      padding: 20px;
+      width: 30%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>User Registration Form</h2>
+  <div class="middle">
+  <form id="userForm" onsubmit="return validateForm()" novalidate>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required>
+    <span id="txt"></span>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+    <span id="pass"></span>
+
+    <label for="repeatPassword">Repeat Password</label>
+    <input type="password" id="repeatPassword" name="repeatPassword" required>
+    <span id="re"></span>
+
+    <label for="dob">Date of Birth (age > 18)</label>
+    <input type="date" id="dob" name="dob" required>
+    <span id="dobs"></span>
+
+    <label for="enrollment">Enrollment Number (11 digits)</label>
+    <input type="text" id="enrollment" name="enrollment" required>
+    <span id="en"></span>
+
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" required>
+    <span id="em"></span>
+
+    <input type="submit" value="Register">
+    </form>
+    </div>
+
+    <script>
+        username = document.getElementById("username")
+        username.addEventListener("blur",()=>{
+        if (username.value.length < 8) {
+            txt.innerHTML = "username must be greater than 8 character"
+            txt.style.color = "red"
+            username.style.border = "solid 1px red"
+        }
+      })
+
+      password.addEventListener("blur", ()=>{
+        const passRegex = /^(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,12}$/;
+        if (!passRegex.test(password)) {
+        pass.innerHTML = "Password must be 8-12 characters long and include at least one digit and one special character."
+        pass.style.color = "red"
+        password.style.border = "solid 1px red"
+      }
+      })
+
+      repeatPassword.addEventListener("blur", ()=>{
+          if (password !== repeatPassword) {
+            re.innerHTML = "Passwords do not match."
+            re.style.color = "red"
+          repeatPassword.style.border = "solid 1px red"
+          }
+
+      })
+
+      dob.addEventListener("blur", ()=>{
+        const birthDate = new Date(dob);
+        const today = new Date();
+        const age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        const dayDiff = today.getDate() - birthDate.getDate();
+        const realAge = monthDiff < 0 || (monthDiff === 0 && dayDiff < 0) ? age - 1 : age;
+
+        if (realAge < 18) {
+          dob.innerHTML = "Age must be greater than 18."
+          dob.style.color = "red"
+          dobs.style.border = "solid 1px red"
+        }
+      })
+
+      enrollment.addEventListener("blur", ()=>{
+        pattern = "^[0-4]{2}[0-1]{2}[0-1]{2}[0-1]{2}[0-9]{3}$"
+        if (!pattern.test(enrollment)) {
+          enrollment.innerHTML = "Enrollment number must be exactly 11 digits."
+          enrollment.style.color = "red"
+          en.style.border = "solid 1px red"
+      }
+      })
+
+      em.addEventListener("blur", ()=>{
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email) || email === null) {
+          email.innerHTML="Please enter a valid email address."
+          email.style.color = "red"
+          em.style.border = "solid 1px red"
+      }
+      })
+      
+      
+      
+    </script>
+</body>
+</html>

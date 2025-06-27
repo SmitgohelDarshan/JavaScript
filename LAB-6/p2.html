@@ -1,0 +1,31 @@
+ <!-- 2. WAP to recognize which mouse event is ƒired. -->
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="clicktxt">click</button>
+    <h1 id="txt"></h1>
+    <script>
+       
+            clicktxt.addEventListener("mouseup", () =>{
+                txt.innerHTML = "mouseup";
+            })
+            clicktxt.addEventListener("mousedown", () =>{
+                txt.innerHTML = "mousedown";
+            })
+            clicktxt.addEventListener("mouseout", () =>{
+                txt.innerHTML = "mouseout";
+            })
+            clicktxt.addEventListener("mousemove", () =>{
+                txt.innerHTML = "mousemove";
+            })
+            clicktxt.addEventListener("mouseover", () =>{
+                console.log("mouseover");
+            })
+    </script>
+  </body>
+  </html>
