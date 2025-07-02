@@ -1,0 +1,21 @@
+ <!-- 1. WAP to demonstrate callbacks in JavaScript.  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sum(a,b,c){
+            sum=a+b;
+            c(sum);
+        }
+        function print(c){
+            document.writeln("sum: "+c);
+        }
+        sum(5,3,print)
+    </script>
+</body>
+</html>
