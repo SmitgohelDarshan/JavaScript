@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHTML Color Change Example</title>
+    <style>
+        #myDiv {
+            width: 130px;
+            height: 100px;
+            background-color: red;
+            margin-left: 50px;
+            margin-top: 30px;
+        }
+        button{
+            margin-left: 50px;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        var colors = ["red", "blue", "green", "yellow", "orange", "purple"];
+        var currentColorIndex = 0;
+
+        function changeColor() {
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+            var div = document.getElementById("myDiv");
+            div.style.backgroundColor = colors[currentColorIndex]; 
+        }
+    </script>
+</head>
+<body>
+    <div id="myDiv"></div>
+    <button onclick="changeColor()">change it!</button>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Page Layout</title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+   
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: red;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 32px;
+        }
+
+        
+        .main {
+            display: flex;
+            flex: 1; /*flex-grow:1 pan chale*/
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .sidebar {
+            flex: 1;
+            background-color: pink;
+            padding: 15px;
+        }
+
+        .content {
+            flex: 3;
+            background-color: yellow;
+            padding: 15px;
+        }
+
+        
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        
+        @media (max-width: 768px) {
+            .main {
+                flex-direction: column;
+            }
+            .header, .footer {
+                font-size: 24px;
+            }
+        }
+
+        
+        @media (max-width: 480px) {
+            .header, .footer {
+                font-size: 19px;
+                padding: 15px;
+            }
+            .main {
+                padding: 10px;
+            }
+            .sidebar, .content {
+                padding: 10px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+             Page Header
+        </div>
+        
+        <div class="main">
+            <div class="sidebar">
+                Sidebar Content
+            </div>
+            <div class="content">
+                Main Content
+            </div>
+        </div>
+        
+        <div class="footer">
+            Page Footer
+        </div>
+    </div>
+</body>
+</html>

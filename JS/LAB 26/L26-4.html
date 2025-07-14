@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Traversing</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Traversing in jQuery</h1>
+    <div id="container">
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+        <p>Third paragraph</p>
+    </div>
+    <button id="parentBtn">Highlight Parent</button>
+    <button id="childrenBtn">Highlight Children</button>
+    <button id="siblingsBtn">Highlight Siblings</button>
+
+    <script>
+        $(document).ready(function() {
+            $("#parentBtn").click(function() {
+                $("#container").parent().addClass("highlight");
+            });
+
+            $("#childrenBtn").click(function() {
+                $("#container").children().addClass("highlight");
+            });
+
+            $("#siblingsBtn").click(function() {
+                $("p:first").siblings().addClass("highlight");
+            });
+        });
+    </script>
+</body>
+</html>

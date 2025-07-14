@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Table</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+<body>
+    <h1 class="display-2 text-center">Student Attendance Tracker</h1>
+    <div class="d-flex justify-content-center gap-3 my-3">
+    <button class="btn btn-success" onclick="allpresent()">All Present</button>
+    <button class="btn btn-success" onclick="allabsent()">All Absent</button>
+    <button class="btn btn-primary" onclick="att()">Take Attendance</button>
+    <button class="btn btn-primary" onclick="reset()">Reset</button>
+  </div>
+    <div id="live" class="text-center mb-3">
+        <span id="totalpre"></span>
+        <span id="totalab"></span>
+    </div>
+    <script>
+        students = [
+          { enroll: "24010101151", name: "Jiya Kyada", roll: 101 },
+          { enroll: "24010101257", name: "Shah Dhvani Hitesh", roll: 102 },
+          { enroll: "24010101251", name: "Saraya Mohit Haresh", roll: 103 },
+          { enroll: "24010101311", name: "Zalavadiya Heet Siddharth", roll: 104 },
+          { enroll: "24010101065", name: "Darshil Dobariya", gender: "M", roll: 105 },
+          { enroll: "24010101076", name: "Nafisa Gandhi", roll: 106 },
+          { enroll: "24010101299", name: "Vasani Yashvi Niteshbhai", roll: 107 },
+          { enroll: "24010101056", name: "Delvadiya Manavkumar Kirtibhai", roll: 108 },
+          { enroll: "24010101008", name: "Ashara Palak Gopalbhai", roll: 109 },
+          { enroll: "24010101158", name: "Lunagariya Greshi Kamleshbhai", roll: 110 },
+          { enroll: "24010101187", name: "Nanavati Shrushti Gargesh", roll: 111 },
+          { enroll: "24010101238", name: "Ranpara Jay Manishbhai", roll: 112 },
+          { enroll: "24010101173", name: "Disha Mehta", roll: 113 },
+          { enroll: "24010101282", name: "Thummar Niraj Bhaveshbhai", roll: 114 },
+          { enroll: "24010101116", name: "Kachhava Nakul Umeshbhai", roll: 115 },
+          { enroll: "24010101124", name: "Kanabar Urva Darshanbhai", roll: 116 },
+          { enroll: "24010101186", name: "Nakar Dhruvil Hitesh", roll: 117 },
+          { enroll: "24010101223", name: "Poshiya Priyanshi Ajaybhai", roll: 118 },
+          { enroll: "24010101013", name: "Baravalia Dharitri Manharbhai", roll: 119 },
+          { enroll: "24010101184", name: "Muchhara Kashish Hiteshbhai", roll: 120 }
+
+        ];
+
+        totalpre = document.getElementById('totalpre');
+        totalab = document.getElementById('totalab');
+        
+        totalab.innerHTML='Total Absent=0';
+        totalpre.innerHTML=`Total Present=0`;
+
+
+        abs=[];
+        
+        document.writeln("<div class='container mt-5' >")
+        document.writeln("<table class='table table-primary table-hover'>")
+        document.writeln("<thead>")
+        document.writeln("<tr>")
+        document.writeln("<th scope='col'>Name</th>")
+        document.writeln("<th scope='col'>Roll no</th>")
+        document.writeln("<th scope='col'>Enrollment</th>")
+        document.writeln("<th scope='col'>status</th>")
+        document.writeln("<th scope='col'></th>")
+        document.writeln("<th scope='col'></th>")
+        document.writeln("<th scope='col'></th>")
+        document.writeln("</thead>")
+        document.writeln("<tbody>")
+
+        students.forEach(stu => {
+        document.writeln("<tr class = 'table-warning'>")
+        document.writeln("<td>"+stu.name+"</td>")   
+        document.writeln("<td>"+stu.roll+"</td>")    
+        document.writeln("<td>"+stu.enroll+"</td>")
+        document.writeln(`<td id='check${stu.roll}'><td>`)    
+        document.writeln(`<td><button class='btn btn-sm btn-success' onclick='pr(${stu.roll})'>Present</button></td>`)  
+        document.writeln(`<td><button class='btn btn-sm btn-danger' onclick='ab(${stu.roll})'>Absent</button></td>`)  
+        document.writeln("</tr>")    
+        });   
+        document.writeln("</tbody>")
+        document.writeln("</table>")
+        document.writeln("</div>")
+    
+        function pr(rollNo) {
+            temp = document.getElementById(`check${rollNo}`)
+            temp.innerHTML = 'Present'
+            temp.style.color = 'green'
+            ct=0;
+            studentCounter();
+        }
+
+        function studentCounter()
+        {
+            totatPresent=0;
+            totalAbsent=0;
+            local=[];
+            for(i=students[0].roll;i<=students[students.length-1].roll;i++)
+            {
+                reftemp=document.getElementById(`check${i}`).textContent;
+                // temp2=reftemp.textContent;
+                    if(reftemp==="Present")
+                {
+                    totatPresent++;
+                }
+                else if(reftemp==="Absent")
+                {
+                    totalAbsent++;
+                    local.push(i);
+                }
+            }
+            abs=local;
+            // console.log(abs);
+            totalpre.innerHTML=`Total Present=${totatPresent}`;
+            totalab.innerHTML=`Total Absent=${totalAbsent}`;
+        }
+
+        function ab(rollNo) {
+            temp = document.getElementById(`check${rollNo}`)
+            temp.innerHTML = 'Absent'
+            temp.style.color = 'red'
+           
+            studentCounter();
+
+        }
+
+        function allpresent(){
+            students.forEach(stu =>{
+                temp = document.getElementById(`check${stu.roll}`)
+                temp.innerHTML = 'Present'
+                temp.style.color = 'green'
+            })
+            studentCounter();
+        }
+
+        function allabsent(){
+            students.forEach(stu =>{
+                temp = document.getElementById(`check${stu.roll}`)
+                temp.innerHTML = 'Absent'
+                temp.style.color = 'red'
+            })
+            studentCounter();
+        }
+
+        function att(){
+            alert(abs);
+        }
+        function reset(){
+            students.forEach(stu=>{
+                temp = document.getElementById(`check${stu.roll}`)
+                temp.innerHTML = ''
+                totalab.innerHTML='Total Absent=0';
+                totalpre.innerHTML=`Total Present=0`;
+                abs = 0
+
+            })
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>

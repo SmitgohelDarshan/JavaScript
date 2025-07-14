@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementsByName Example</title>
+    <script>
+        function showChecked() {
+            var elements = document.getElementsByName("fruit");
+            var selectedFruits = [];
+            for (var i = 0; i < elements.length; i++) {
+                if (elements[i].checked) {
+                    selectedFruits.push(elements[i].value);
+                }
+            }
+            alert("Selected fruits: " + selectedFruits.join(", "));
+        }
+    </script>
+</head>
+<body>
+    <h2>Select fruits:</h2>
+    <input type="checkbox" name="fruit" value="Apple"> Apple<br>
+    <input type="checkbox" name="fruit" value="Banana"> Banana<br>
+    <input type="checkbox" name="fruit" value="Mango"> Mango<br>
+    <button onclick="showChecked()">Show Selected Fruits</button>
+</body>
+</html>

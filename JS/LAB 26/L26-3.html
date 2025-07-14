@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>DOM Manipulation</h1>
+    <ul id="fruits">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Cherry</li>
+    </ul>
+    <button id="addItem">Add Item</button>
+    <button id="removeItem">Remove Item</button>
+    <button id="modifyItem">Modify First Item</button>
+
+    <script>
+        $(document).ready(function() {
+            $("#addItem").click(function() {
+                $("#fruits").append("<li>Orange</li>");
+            });
+
+            $("#removeItem").click(function() {
+                $("#fruits li:last").remove();
+            });
+
+            $("#modifyItem").click(function() {
+                $("#fruits li:first").text("Grapes");
+            });
+        });
+    </script>
+</body>
+</html>

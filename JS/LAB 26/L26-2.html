@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Chaining</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chaining in jQuery</h1>
+    <button id="start">Start Animation</button>
+    <div id="box"></div>
+
+    <script>
+        $(document).ready(function() {
+            $("#start").click(function() {
+                $("#box")
+                    .fadeOut(500)
+                    .fadeIn(500)
+                    .css("background-color", "blue")
+                    .slideUp(500)
+                    .slideDown(500);
+            });
+        });
+    </script>
+</body>
+</html>

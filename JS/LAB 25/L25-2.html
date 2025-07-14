@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Selectors</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .highlight {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Selectors in jQuery</h1>
+    <p class="para">This is the first paragraph.</p>
+    <p class="para">This is the second paragraph.</p>
+    <button id="btn">Highlight Elements</button>
+
+    <script>
+        $(document).ready(function() {
+            $("#btn").click(function() {
+                $("#title").addClass("highlight"); 
+                $(".para").addClass("highlight");
+                $("p:nth-child(2)").text("This text was modified using jQuery!");
+            });
+        });
+    </script>
+</body>
+</html>

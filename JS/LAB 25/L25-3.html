@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Custom Selectors</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Custom Selectors</h1>
+    <ul>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Cherry</li>
+        <li>Dates</li>
+    </ul>
+    <button id="btn">Apply Custom Selectors</button>
+
+    <script>
+        $(document).ready(function() {
+            $("#btn").click(function() {
+                $("li:contains('Banana')").addClass("highlight");
+                $("li:even").css("color", "red"); 
+                $("li:odd").css("color", "blue");
+            });
+        });
+    </script>
+</body>
+</html>

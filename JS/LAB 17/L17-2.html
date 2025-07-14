@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Event Detector</title>
+</head>
+<body>
+
+<h2>Press any key to detect the keyboard event:</h2>
+<p id="eventInfo"></p>
+
+<script>
+    const eventInfo = document.getElementById("eventInfo");
+
+
+    document.addEventListener("keydown", (event) => {
+        eventInfo.innerText = `Keyboard Event Fired: keydown (Key: ${event.key})`;
+    });
+
+    document.addEventListener("keypress", (event) => {
+        eventInfo.innerText = `Keyboard Event Fired: keypress (Key: ${event.key})`;
+    });
+
+    document.addEventListener("keyup", (event) => {
+        eventInfo.innerText = `Keyboard Event Fired: keyup (Key: ${event.key})`;
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Element Properties</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 100px;
+            font-weight: bold;
+        }
+        button{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">Box</div>
+<button onclick="changeProperties()">Change Properties</button>
+
+<script>
+    function changeProperties() {
+        const box = document.getElementById("box");
+        
+        box.style.width = "150px";
+        box.style.height = "150px";
+        box.style.backgroundColor = "orange";
+        box.style.color = "white";
+        box.style.borderRadius = "10px";
+        box.style.lineHeight ="140px"
+        box.style.fontSize = "20px";
+    }
+</script>
+
+</body>
+</html>

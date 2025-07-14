@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Java Script Demo</title>
+</head>
+<body>
+    <div>
+        <p id="para1">Hello World!</p>
+        <button onclick="changetext()">Click Here to Change</button>
+    </div>
+    <script>
+        function changetext(){
+            document.getElementById('para1').innerHTML = "Text Changed Successfully";
+        }
+    </script>
+</body>
+</html>

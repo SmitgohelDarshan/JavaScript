@@ -1,0 +1,85 @@
+<!-- WAP to perform CRUD operation on Array using HTML and JavaScript. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="username">
+    <input type="text" id="usersem">
+    <button onclick="addstu()" id="btn">ADD</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Sr no</th>
+                <th>Name</th>
+                <th>Sem</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tblbody">
+            
+        </tbody>
+    </table>
+    <script>
+        arr = []
+        
+        editIndex= -1
+  
+        function display(){
+            temp = ''
+            for(i=0; i <arr.length; i++){
+                    temp += 
+                        `<tr>
+                            <th>${i+1}</th>
+                            <th>${arr[i].name}</th>
+                            <th>${arr[i].sem}</th>
+                            <th><button onclick='editstu(${i})'>Modify</button><button onclick='delet(${i})'>delete</button></th>
+                        </tr>`
+            }
+             tblbody.innerHTML = temp;
+        }
+
+        function addstu(){
+            nameRef = username.value
+            semRef = usersem.value
+            
+            arr1 = {
+                name : nameRef,
+                sem : semRef
+            }
+
+            if(editIndex != -1){
+                arr[editIndex] = arr1
+                editIndex = -1
+                btn.innerHTML = "ADD"
+            }
+            else{
+                if(nameRef == '' && semRef == ''){
+                    alert("Enter Name: ")
+                }
+                else{
+                    arr.push(arr1)
+                    nameRef.value = ''
+                    semRef.value = ''
+                }
+            }
+            display()
+        }
+
+        function delet(element){
+            arr.splice(element,1)
+            display()
+        }
+
+        function editstu(idx){
+            editIndex = idx
+            nameRef.value = arr[idx]
+            semRef.value = arr[idx]
+            btn.innerHTML = "Edit"
+        }
+    </script>
+</body>
+</html>

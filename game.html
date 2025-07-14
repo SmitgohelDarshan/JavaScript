@@ -1,0 +1,155 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            height: 30px;
+            width: 5px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="increase()">INCREASE</button>
+    <button onclick="descrease()">DESCREASE</button>
+    <button onclick="large()">LARGE</button>
+    <button onclick="small()">SMALL</button>
+    <button onclick="STOP()">STOP</button>
+    <div id="box"></div>
+    
+
+    <script>
+        get = document.getElementById("box");
+        
+
+        wth=0;
+        function big(){
+            wth+=10;
+            get.style.width=wth+"px";
+        }
+        function small(){
+            wth-=10;
+            get.style.width=wth+"px";
+        }
+        temp=0
+        function increase()
+        {
+            clearInterval(temp);
+            temp=setInterval(big,30.5);
+        }
+        function descrease()
+        {
+            clearInterval(temp);
+            temp=setInterval(small,30.5);
+        }
+
+        heigth = 0
+        function h11(){
+            heigth += 10
+            get.style.height=heigth+"px";
+        }
+        function h22(){
+            heigth -= 10
+            get.style.height=heigth+"px";
+        }
+
+        save=0
+        function large(){
+            clearInterval(save);
+            save= setInterval(h11,30.5)
+        }
+        function small(){
+            clearInterval(save);
+            save= setInterval(h22,30.5)
+        }
+
+        function STOP(){
+    clearInterval(temp);
+    clearInterval(save);   // stop the height loop too
+}
+
+        
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            height: 30px;
+            width: 5px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="increase()">INCREASE</button>
+    <button onclick="decrease()">DECREASE</button>
+    <button onclick="large()">LARGE</button>
+    <button onclick="heigthSmall()">SMALL</button>
+    <button onclick="STOP()">STOP</button>
+    <div id="box"></div>
+    
+
+    <script>
+        get = document.getElementById("box");
+        
+
+        wth=0;
+        function big(){
+            wth+=10;
+            get.style.width=wth+"px";
+        }
+        function small(){
+            wth-=10;
+            get.style.width=wth+"px";
+        }
+        temp=0
+        function increase()
+        {
+            clearInterval(temp);
+            temp=setInterval(big,30.5);
+        }
+        function decrease()
+        {
+            clearInterval(temp);
+            temp=setInterval(small,30.5);
+        }
+
+        heigth = 0
+        function h11(){
+            heigth += 10
+            get.style.height=heigth+"px";
+        }
+        function h22(){
+            heigth -= 10
+            get.style.height=heigth+"px";
+        }
+
+        save=0
+        function large(){
+            clearInterval(save);
+            save= setInterval(h11,30.5)
+        }
+        function heigthSmall(){
+            clearInterval(save);
+            save= setInterval(h22,30.5)
+        }
+
+        function STOP(){
+    clearInterval(temp);
+    clearInterval(save);   // stop the height loop too
+}
+
+        
+    </script>
+</body>
+</html>

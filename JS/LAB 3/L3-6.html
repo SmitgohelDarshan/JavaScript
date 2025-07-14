@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation timing</title>
+    <style>
+        .container {
+            height: 70vh;
+            position: relative;
+            border: solid 2px black;
+        }
+
+        .main {
+            height: 10%;
+            width: 10%;
+            animation-name: postionchange;
+            animation-duration: 5s;
+            position: absolute;
+            background-color: red;
+            text-align: center;
+            animation-iteration-count: infinite;
+            animation-direction: reverse;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes postionchange {
+            0% {
+                top: 0%;
+                left: 0%;
+            }
+
+            25% {
+                top: 0%;
+                left: 90%;
+
+            }
+
+            50% {
+                top: 90%;
+                left: 90%;
+
+            }
+
+            75% {
+                top: 90%;
+                left: 0%;
+
+            }
+
+            100% {
+                top: 0%;
+                left: 0%;
+
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="main"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Attendance Tracker</title>
+  <style>
+    body   { font-family: Arial, sans-serif; margin: 20px; text-align: center; }
+    table  { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { border: 1px solid #999; padding: 6px; }
+    th     { background: #f0f0f0; }
+    [type="checkbox"]{transform: scale(1.2); }
+    .present { color: green; font-weight: bold; }
+    .absent  { color: red;   font-weight: bold; }
+    button { margin: 4px; padding: 6px 12px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Student Attendance Tracker</h2>
+
+  <button onclick="markAll(true)">All Present</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Sr No</th>
+        <th>Roll No</th>
+        <th>Name</th>
+        <th>Present?</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="tblBody">
+      <script>
+ 
+        const students = [
+          { enroll: "24010101151", name: "Jiya Kyada", roll: 101 },
+          { enroll: "24010101257", name: "Shah Dhvani Hitesh", roll: 102 },
+          { enroll: "24010101251", name: "Saraya Mohit Haresh", roll: 103 },
+          { enroll: "24010101311", name: "Zalavadiya Heet Siddharth", roll: 104 },
+          { enroll: "24010101065", name: "Darshil Dobariya", gender: "M", roll: 105 },
+          { enroll: "24010101076", name: "Nafisa Gandhi", roll: 106 },
+          { enroll: "24010101299", name: "Vasani Yashvi Niteshbhai", roll: 107 },
+          { enroll: "24010101056", name: "Delvadiya Manavkumar Kirtibhai", roll: 108 },
+          { enroll: "24010101008", name: "Ashara Palak Gopalbhai", roll: 109 },
+          { enroll: "24010101158", name: "Lunagariya Greshi Kamleshbhai", roll: 110 },
+          { enroll: "24010101187", name: "Nanavati Shrushti Gargesh", roll: 111 },
+          { enroll: "24010101238", name: "Ranpara Jay Manishbhai", roll: 112 },
+          { enroll: "24010101173", name: "Disha Mehta", roll: 113 },
+          { enroll: "24010101282", name: "Thummar Niraj Bhaveshbhai", roll: 114 },
+          { enroll: "24010101116", name: "Kachhava Nakul Umeshbhai", roll: 115 },
+          { enroll: "24010101124", name: "Kanabar Urva Darshanbhai", roll: 116 },
+          { enroll: "24010101186", name: "Nakar Dhruvil Hitesh", roll: 117 },
+          { enroll: "24010101223", name: "Poshiya Priyanshi Ajaybhai", roll: 118 },
+          { enroll: "24010101013", name: "Baravalia Dharitri Manharbhai", roll: 119 },
+          { enroll: "24010101184", name: "Muchhara Kashish Hiteshbhai", roll: 120 }
+
+        ];
+        students.forEach((stu, idx) => {
+          document.write(
+            `<tr>
+              <td>${idx + 1}</td>
+              <td>${stu.roll}</td>
+              <td style="text-align:left">${stu.name}</td>
+              <td><input type="checkbox" id="chk${stu.roll}" onchange="setStatus(${stu.roll})"></td>
+              <td id="status${stu.roll}" class="absent">Absent</td>
+            </tr>`
+          );
+        });
+      </script>
+    </tbody>
+  </table>
+
+  <p>Total Present: <span id="presentCount">0</span></p>
+  <p>Absent Rolls: <span id="absentRolls" style="font-weight:bold"></span></p>
+  <button onclick="takeAttendance()">Take Attendance</button>
+
+  <script>
+    function setStatus(roll) {
+      const cb     = document.getElementById('chk' + roll);
+      const status = document.getElementById('status' + roll);
+      if (cb.checked) {
+        status.textContent = 'Present';
+        status.className   = 'present';
+      } else {
+        status.textContent = 'Absent';
+        status.className   = 'absent';
+      }
+      updateSummary();
+    }
+
+    function markAll(state) {
+      students.forEach(stu => {
+        const temp = document.getElementById('chk' + stu.roll);
+        temp.checked = state;
+        setStatus(stu.roll);
+      });
+    }
+
+    function getAbsentRolls() {
+      /*const absent = [];
+      for (let i = 0; i < students.length; i++) {
+        const stu = students[i];
+        const cb  = document.getElementById('chk' + stu.roll);
+        if (!cb.checked) {
+          absent.push(stu.roll);
+        }
+      }
+      return absent;
+      */
+      return students
+        .filter(stu => !document.getElementById('chk' + stu.roll).checked)
+        .map(stu => stu.roll);
+    }
+
+    function updateSummary() {
+      const absentRolls = getAbsentRolls();
+      const present     = students.length - absentRolls.length;
+      document.getElementById('presentCount').textContent = present;
+      document.getElementById('absentRolls').textContent  = absentRolls.length ? absentRolls.join(', ') : 'None';
+    }
+
+    function takeAttendance() {
+      const absentRolls = getAbsentRolls();
+      alert(
+        absentRolls.length
+          ? 'Absent roll numbers: ' + absentRolls.join(', ')
+          : 'Everyone is present!'
+      );
+    }
+
+    updateSummary();
+  </script>
+</body>
+</html>

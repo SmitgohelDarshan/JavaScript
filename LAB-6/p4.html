@@ -102,7 +102,7 @@
       })
 
       password.addEventListener("blur", ()=>{
-        const passRegex = /^(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,12}$/;
+         passRegex = /^(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,12}$/;
         if (!passRegex.test(password)) {
         pass.innerHTML = "Password must be 8-12 characters long and include at least one digit and one special character."
         pass.style.color = "red"
@@ -134,18 +134,19 @@
         }
       })
 
-      enrollment.addEventListener("blur", ()=>{
-        pattern = "^[0-4]{2}[0-1]{2}[0-1]{2}[0-1]{2}[0-9]{3}$"
+
+enrollment.addEventListener("blur", ()=>{
+         pattern = /^[0-9]{11}$/
         if (!pattern.test(enrollment)) {
-          enrollment.innerHTML = "Enrollment number must be exactly 11 digits."
-          enrollment.style.color = "red"
-          en.style.border = "solid 1px red"
+        en.innerHTML = "Password must be 8-12 characters long and include at least one digit and one special character."
+        en.style.color = "red"
+        enrollment.style.border = " 1px solid red"
       }
       })
 
       em.addEventListener("blur", ()=>{
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email) || email === null) {
+         emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(email) || email == null) {
           email.innerHTML="Please enter a valid email address."
           email.style.color = "red"
           em.style.border = "solid 1px red"

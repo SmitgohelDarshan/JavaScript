@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        form{
+            border: 2px solid black;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 0 5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return checkValidation()">
+        <table align="center" cellSpacing="5" cellPadding="5">
+            <caption>
+                <h1>Student Registration</h1>
+            </caption>
+            <tr align="center">
+                <td>FullName</td>
+                <td></td>
+                <td><input type="text" id="FullName"></td>
+            </tr>
+            <tr align="center">
+                <td>Email</td>
+                <td></td>
+                <td><input type="email" id="email" ></td>
+            </tr>
+            <tr align="center">
+                <td>Mobile No</td>
+                <td></td>
+                <td><input type="text" id="mobile"></td>
+            </tr>
+            <tr align="center">
+                <td>Address</td>
+                <td></td>
+                <td><textarea cols="20" rows="10" id="address"></textarea></td>
+            </tr>
+            <tr align="center">
+                <td>Nationality</td>
+                <td></td>
+                <td><input type="text" id="nationality"></td>
+            </tr>
+            <tr align="center">
+                <td>Date Of Birth</td>
+                <td></td>
+                <td><input type="date" id="dob" ></td>
+            </tr>
+            <tr align="center">
+                <td>Gender</td>
+                <td></td>
+                <td>
+                    <input type="radio" name="gender">Male &nbsp;
+                    <input type="radio" name="gender">Female &nbsp;
+                    <input type="radio" name="gender">Other &nbsp;
+
+                </td>
+            </tr>
+            <tr align="center">
+                <td>Highest Degree</td>
+                <td></td>
+                <td>
+                    <select id="degree">
+                        <option value="select">Select Degree</option>
+                        <option value="B.tech (Computer)">B.tech (Computer)</option>
+                        <option value="B.tech (Electrical)">B.tech (Electrical)</option>
+                        <option value="B.tech (Civil)">B.tech (Civil)</option>
+                        <option value="B.tech (Mechanical)">B.tech (Mechanical)</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="B.C.A">B.C.A</option>
+                        <option value="M.C.A">M.C.A</option>
+                        <option value="B.B.A">B.B.A</option>
+                        <option value="M.B.A">M.B.A</option>
+                    </select>
+                </td>
+            </tr>
+            <tr align="center">
+                <td colspan="3">
+                    <button type="submit">Submit</button>&nbsp;
+                    <button type="reset">Cancel</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script src="L11-1.js"></script>
+</body>
+
+</html>

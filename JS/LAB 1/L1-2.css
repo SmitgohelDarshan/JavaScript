@@ -1,0 +1,12 @@
+.container {
+    background-color: yellow;
+    padding: 20px; 
+}
+.content {
+    background-color: red;
+    height: 200px; 
+    font-size:17px;
+}
+p {
+    color: white ;
+}

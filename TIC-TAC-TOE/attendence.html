@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		for(i=101;i<201;i++){
+			document.write("<input type='checkbox' value='"+i+"' /> "+i)
+		}
+	</script>
+	<br/>
+	<button onclick="takeAttendance()">Take attendance</button>
+
+
+	<button onclick="allPresent()">All Present</button>
+	<button onclick="allAbsent()">All Absent</button>
+	<script type="text/javascript">
+		function allPresent(){
+			inputRef = document.getElementsByTagName("input");
+
+			for(i=0;i<inputRef.length;i++){
+				inputRef[i].checked = true;
+			}
+		}
+		function allAbsent(){
+			inputRef = document.getElementsByTagName("input");
+
+			for(i=0;i<inputRef.length;i++){
+				inputRef[i].checked = false;
+			}
+		}
+
+		function takeAttendance(){
+			inputRef = document.getElementsByTagName("input");
+			absentNos = ""
+			for(i=0;i<inputRef.length;i++){
+				if(!inputRef[i].checked){
+					absentNos+= inputRef[i].value+", "
+				}
+			}
+			console.log(absentNos);
+		}
+	</script>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attendance</title>
+</head>
+<body>
+  <h1>Attendance</h1>
+
+  <!-- ----------- create 281 check-boxes (cb1 … cb281) ----------- -->
+  <script>
+    for (let i = 1; i <= 281; i++) {
+      document.write(
+        "<label><input type='checkbox' id='cb" + i + "' checked> " + i + "</label>"
+      );
+    }
+  </script>
+
+  <br>
+  <button onclick="setAll(true)">all present</button>
+  <button onclick="setAll(false)">all absent</button>
+  <button onclick="showAbsent()">OK</button>
+
+  <!-- a place to print the result -->
+  <p id="result"></p>
+
+  <script>
+    /* ---------- check or un-check every box -------------------- */
+    function setAll(state) {
+      for (let i = 1; i <= 281; i++) {
+        document.getElementById('cb' + i).checked = state;
+      }
+    }
+
+    /* ---------- list unchecked boxes -------------------------- */
+    function showAbsent() {
+      let absent = "";                                       // will hold roll nos.
+      for (let i = 1; i <= 281; i++) {
+        if (!document.getElementById('cb' + i).checked) {    // if not ticked …
+          absent += (absent ? ", " : "") + i;                // add with commas
+        }
+      }
+
+      // Show the result on the page (and optionally in an alert)
+      document.getElementById("result").textContent =
+        absent ? "Absent roll numbers: " + absent : "Everyone is present!";
+      // alert(document.getElementById("result").textContent); // uncomment if you prefer a popup
+    }
+  </script>
+</body>
+</html> -->

@@ -16,6 +16,18 @@
             document.writeln(`a:${a} and b:${b}`)
         }
         print()
+
+        a=10;
+        function demo(){
+            var a=20;
+            if(true){
+                let a=30;
+                document.writeln("<br>Inside Block:",a);
+            }
+            document.writeln("<br>Inside Function:",a);
+        }
+        demo();
+        document.writeln("<br>Outside Function:",a);
     </script>
 </body>
 </html>

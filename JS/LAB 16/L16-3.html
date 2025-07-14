@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event Recognition</title>
+</head>
+<body>
+    <h1>Click anywhere to detect mouse events!</h1>
+    <div id="events" style="margin-top: 20px;"></div>
+
+    <script>
+        function mouseEventHandler(event) {
+            const events = document.getElementById('events');
+            events.innerHTML = `Mouse Event Fired: ${event.type}`;
+        }
+
+        document.addEventListener('click', mouseEventHandler);  
+        document.addEventListener('dblclick', mouseEventHandler);  
+        document.addEventListener('mousedown', mouseEventHandler); 
+        document.addEventListener('mouseup', mouseEventHandler); 
+        document.addEventListener('mouseenter', mouseEventHandler); 
+        document.addEventListener('mouseleave', mouseEventHandler);
+        document.addEventListener('mousemove', mouseEventHandler);
+    </script>
+</body>
+</html>
